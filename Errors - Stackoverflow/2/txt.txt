@@ -1,0 +1,56 @@
+css:
+
+.nav-mini {
+            z-index: 1;
+            border-radius: 10px;
+            width: 90%;
+            background-color: #fff;
+            position: absolute;
+            top: 90px;
+            left: 0;
+            right: 0;
+            margin: auto;
+            animation: topToBottom 0.3s ease-in;
+        }
+        
+        
+HTML:
+
+<div class="nav-mini">
+        <div class="nav-mini-item">
+            <h2>About</h2>
+        </div>
+        <hr>
+        <div class="nav-mini-item">
+            <h2>Discover</h2>
+        </div>
+        <hr>
+        <div class="nav-mini-item">
+            <h2>Get Started</h2>
+        </div>
+    </div>
+    <div class="icn-wrapper">
+        <svg class="icn-ham" width="20" height="19" xmlns="http://www.w3.org/2000/svg"><g fill="#fff" fill-rule="evenodd"><path d="M0 0h16v3H0zM0 6h16v3H0zM0 12h16v3H0z"/></g></svg>
+    </div>
+    <div class="icn-wrapper icn-close-wrapper">
+        <img class="icn-close" src="images/icon-close-menu.svg" alt="">
+    </div>
+    
+JS:
+
+var hamburger = $(".icn-ham")
+var navbarMini = $(".nav-mini")
+var iconClose = $(".icn-close-wrapper")
+var navMiniItem = $(".nav-mini-item")
+
+hamburger.click(function() {
+    navbarMini.show();
+    $(this).hide();
+    iconClose.show();
+})
+
+iconClose.click(function() {
+    navbarMini.hide();
+    $(this).hide()
+    hamburger.show();
+})

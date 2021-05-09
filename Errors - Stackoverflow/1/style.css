@@ -1,0 +1,62 @@
+ .backProjectCard2 {
+    padding-right: 10px;
+}
+
+.backProjectCard {
+    border: 2px solid #ececec;
+    border-radius: 10px;
+    margin: 0 0 20px;
+    padding-top: 24px;
+    position: relative;
+    right: 5px;
+    width: 580px;
+}
+
+/*For Input and .checkmark*/
+
+.backProjectCard input {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    left: 20px;
+}
+.input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.backProject input:checked~.checkmark {
+    background-color: #fff;
+}
+
+.checkmark {
+    position: absolute;
+    top: 27px;
+    left: 20px;
+    height: 18px;
+    width: 18px;
+    background-color: #fff;
+    border-radius: 50%;
+    border: solid #e0e0e0 1.7px;
+    z-index: -1;
+}
+
+.backProject input:checked~.checkmark:after {
+    display: block;
+}
+
+.backProject .checkmark:after {
+    top: 2px;
+    left: 3px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: hsl(176, 50%, 47%);
+}
+.checkmark:after {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    display: none;
+}
