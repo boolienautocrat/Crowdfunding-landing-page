@@ -686,6 +686,10 @@ input::-webkit-inner-spin-button {
 }
 
 @media only screen and (max-width: 380px) {
+  a {
+    text-decoration: none;
+    color: #000;
+  }
   .product-name {
     font-size: 22px;
     width: 70%;
@@ -708,6 +712,7 @@ input::-webkit-inner-spin-button {
     left: 0;
     right: 0;
     margin: auto;
+    animation: fromTopToBottom .3s ease;
   }
   .nav-mini h2 {
     font-weight: 500;
@@ -814,7 +819,7 @@ input::-webkit-inner-spin-button {
     top: -80px;
   }
   .about-section p {
-    line-height: 28px;
+    line-height: 26px;
     font-size: 15px;
     margin-top: 25px;
   }
@@ -903,6 +908,10 @@ input::-webkit-inner-spin-button {
     top: 48px;
     width: 112% !important;
   }
+
+  .bPChr3 {
+    top: 48px;
+  }
   .backProject input:checked ~ #card2-num {
     bottom: 180px;
     margin: 0;
@@ -940,10 +949,11 @@ input::-webkit-inner-spin-button {
   .backProject input:checked ~ #left {
     bottom: 172px !important;
     margin-left: 0px;
-    left: 55px;
+    top: 243px;
+    left: 50px;
   }
 
-  .backProjectCard2 .pledgeSection {
+  :is(.backProjectCard2, .backProjectCard3) .pledgeSection {
     top: 45px;
   }
   .backProjectCard2,
@@ -967,9 +977,24 @@ input::-webkit-inner-spin-button {
   #card2-num {
     bottom: 40px;
   }
-  .backProjectCard3 #left,
+  :is(.backProjectCard3) #left,
   #card2-num {
     top: 245px;
+  }
+
+  .backProjectCard2 #left {
+    margin-left: 0px;
+    top: 243px;
+    left: 53px;
+  }
+
+  .backProjectCard2 .input:checked ~ #left {
+    left: 53px;
+  }
+  .backProjectCard3 #left {
+    left: 50px;
+    top: 243px;
+    margin-left: 0px;
   }
   #card-h3 {
     margin-left: 20px;
@@ -1028,10 +1053,28 @@ input::-webkit-inner-spin-button {
     text-align: center;
     position: relative;
     width: 285px;
-    right: 20px;
+    right: 23px;
     height: 130px;
   }
   .btn-2 {
     width: 110px !important;
+  }
+
+  @keyframes fromTopToBottom {
+    0% {
+      top: 0px;
+    }
+    100% {
+      top: 90px;
+    }
+  }
+
+  @keyframes fromBottomToTop {
+    0%{
+      top: 90px;
+    }
+    100% {
+      top: 0px;
+    }
   }
 }
