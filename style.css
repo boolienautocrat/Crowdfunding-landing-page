@@ -9,6 +9,7 @@
 }
 
 body {
+  scroll-behavior: smooth;
   font-size: 16px;
   font-family: "Commissioner", sans-serif !important;
   height: 100%;
@@ -506,7 +507,7 @@ button {
 }
 
 .backProject input:checked ~ .pledgeSection {
-  display: block;
+  display: block !important;
 }
 
 .backProject input:checked ~ .backProjectCard {
@@ -685,7 +686,7 @@ input::-webkit-inner-spin-button {
   border-radius: 5px;
 }
 
-@media only screen and (max-width: 380px) {
+@media only screen and (max-width: 480px) {
   a {
     text-decoration: none;
     color: #000;
@@ -712,7 +713,7 @@ input::-webkit-inner-spin-button {
     left: 0;
     right: 0;
     margin: auto;
-    animation: fromTopToBottom .3s ease;
+    animation: fromTopToBottom 0.3s ease;
   }
   .nav-mini h2 {
     font-weight: 500;
@@ -812,7 +813,7 @@ input::-webkit-inner-spin-button {
     height: 460px;
   }
   .cd-3-contents {
-    padding: 45px 20px 40px;
+    padding: 45px 20px 20px;
   }
   .progress-bar {
     width: 100%;
@@ -858,7 +859,8 @@ input::-webkit-inner-spin-button {
     position: static;
   }
   .mn-cd-3 {
-    height: 1794px;
+    height: auto;
+    bottom: 35px;
   }
   .backProject {
     width: 90%;
@@ -910,10 +912,11 @@ input::-webkit-inner-spin-button {
   }
 
   .bPChr3 {
-    top: 48px;
+    top: 45px;
   }
   .backProject input:checked ~ #card2-num {
-    bottom: 180px;
+    top: 245px;
+    left: 23px;
     margin: 0;
     padding: 0;
   }
@@ -936,20 +939,23 @@ input::-webkit-inner-spin-button {
   }
   #left {
     margin: 0 0 0 40px;
-    top: 242px;
+    top: 243px;
   }
   .prod-des-2 {
     font-size: 14.5px !important;
-    margin: 20px 0 30px 0 !important;
+    margin: 20px 0 30px 0;
     width: 93% !important;
   }
   #card2-num {
+    top: 245px;
+    bottom: auto;
+    left: 23px;
+    padding: 0;
     margin-left: 0px;
   }
   .backProject input:checked ~ #left {
-    bottom: 172px !important;
-    margin-left: 0px;
     top: 243px;
+    margin-left: 0px;
     left: 50px;
   }
 
@@ -959,7 +965,7 @@ input::-webkit-inner-spin-button {
   .backProjectCard2,
   .backProjectCard3,
   .backProjectCard4 {
-    height: 310px;
+    height: 290px;
   }
   .backProjectCard1.heightIncrease {
     height: 390px;
@@ -973,18 +979,9 @@ input::-webkit-inner-spin-button {
     height: 450px;
     transition: height, 0.3s linear;
   }
-  .backProjectCard2 #left,
-  #card2-num {
-    bottom: 40px;
-  }
-  :is(.backProjectCard3) #left,
-  #card2-num {
-    top: 245px;
-  }
 
   .backProjectCard2 #left {
     margin-left: 0px;
-    top: 243px;
     left: 53px;
   }
 
@@ -992,8 +989,8 @@ input::-webkit-inner-spin-button {
     left: 53px;
   }
   .backProjectCard3 #left {
-    left: 50px;
     top: 243px;
+    left: 50px;
     margin-left: 0px;
   }
   #card-h3 {
@@ -1002,12 +999,12 @@ input::-webkit-inner-spin-button {
   }
   #card3-num {
     position: absolute;
-    bottom: 42px;
+    bottom: 32px;
   }
   #card4-left {
     margin: 0 0 0 20px;
     position: absolute;
-    bottom: 40px;
+    bottom: 30px;
   }
   .card4-p {
     margin: 25px 0 0 5px !important;
@@ -1060,6 +1057,24 @@ input::-webkit-inner-spin-button {
     width: 110px !important;
   }
 
+  .thanks {
+    padding: 30px;
+    width: 90%;
+    height: 400px;
+    top: 160px;
+  }
+  #icon-check {
+    margin-bottom: 10px;
+  }
+  .thanks h2 {
+    font-size: 20px;
+  }
+  .thanks p {
+    font-size: 14.7px;
+    line-height: 28px;
+    margin-bottom: 30px;
+    padding-bottom: 0px;
+  }
   @keyframes fromTopToBottom {
     0% {
       top: 0px;
@@ -1070,7 +1085,7 @@ input::-webkit-inner-spin-button {
   }
 
   @keyframes fromBottomToTop {
-    0%{
+    0% {
       top: 90px;
     }
     100% {

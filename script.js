@@ -1,5 +1,6 @@
 var bkmarkCircle = document.getElementsByClassName("bkmark-circle");
 var bkmarkSvgIn = document.getElementsByClassName("bkmarkSvgIn");
+var btnBkmrk = $(".btn-left");
 var button = document.getElementsByClassName("btn-bookmark");
 var buttonText = document.getElementsByClassName("btn-text");
 var hamburger = $(".icn-ham")
@@ -8,6 +9,16 @@ var iconClose = $(".icn-close-wrapper")
 var cards = [$(".mn-cd-1"), $(".mn-cd-2"), $(".mn-cd-3")]
 var navMiniItem = $(".nav-mini-item");
 var body = $("body")
+var backProjectCard = $(".backProjectCard");
+
+$("body").onunload =
+    $(".input")[0].checked = false;
+    $("html").animate({
+        scrollTop : 0
+    }, "slow");
+$(".input")[1].checked = false;
+$(".input")[2].checked = false;
+
 
 function bkmrkChange() {
 
@@ -59,11 +70,12 @@ function backProjectShow() {
     $(".mn-cd-1").show();
     $(".mn-cd-2").show();
     $(".mn-cd-3").show();
-    if (radioInput[0].checked == true || radioInput[1].checked == true || radioInput[2].checked == true) {
-        radioInput[0].checked = false; 
-        radioInput[1].checked = false;
-        radioInput[2].checked = false;
-    }
+    $(".input")[0].checked = false;
+    $(".input")[1].checked = false;
+    $(".input")[2].checked = false;
+    backProjectCard.removeClass("heightIncrease");
+    backProjectCard.css("border", "2px solid #ececec");
+    $(".pledgeSection").hide();
 }
 
 function radioCheck() {
@@ -117,6 +129,23 @@ function redirectThanks() {
     $(".hero-img-desktop").css("filter", "contrast(80%)")
     $(".backProject").css("display", "none");
     $(".thanks").css("display", "inline-block");
+    $(".input")[0].checked = false;
+    $(".input")[1].checked = false;
+    $(".input")[2].checked = false;
+    backProjectCard.removeClass("heightIncrease");
+    backProjectCard.css("border", "2px solid #ececec");
+    $(".pledgeSection").hide();
+    if (window.matchMedia("(max-width: 400px)").matches){
+        $("html").animate({
+            scrollTop: 80
+        }, "slow")
+    };
+    if (window.matchMedia("(min-width: 500px)").matches && window.matchMedia("(max-width: 1400px)").matches) {
+        $("html").animate({
+            scrollTop: 260
+        }, "slow");
+        body.css("overflow", "hidden");   
+    }
 }
 
 function thanksEnd() {
@@ -126,6 +155,10 @@ function thanksEnd() {
     $("body").css("background-color", "#fff")
     $(".hero-img-desktop").css("filter", "contrast(100%)")
     $(".thanks").css("display", "none")
+    body.css("overflow", "auto");
+    $("html").animate({
+        scrollTop: 0
+    }, "slow");
 }
 
 //Inputs
@@ -136,14 +169,18 @@ var input3 = $(".input-price3");
 var con2 = $(".card2Btn");
 var con3 = $(".card3Btn");
 
+var btn2 = $(".btn-2");
+
 
 //For Card 2
 
 function minPledge2() {
     if (input2.val() < 25) {
+        btn2.css("border", "1px solid #83afad");
         con2.css("pointer-events", "none")
-        con2.css("background-color", "#bfbfbf")
+        con2.css("background-color", "#83afad")
     } else if (input2.val() > 25 || input2.val() == 25) {
+        btn2.css("border", "1px solid hsl(176, 50%, 47%)");
         con2.css("pointer-events", "auto")
         con2.css("background-color", "hsl(176, 50%, 47%)")
     }
@@ -153,9 +190,11 @@ function minPledge2() {
 
 function minPledge3() {
     if (input3.val() < 75) {
+        btn2.css("border", "1px solid #83afad");
         con3.css("pointer-events", "none")
-        con3.css("background-color", "#bfbfbf")
+        con3.css("background-color", "#83afad")
     } else if (input3.val() > 75 || input3.val() == 75) {
+        btn2.css("border", "1px solid hsl(176, 50%, 47%)");
         con3.css("background-color", "hsl(176, 50%, 47%)")
         con3.css("pointer-events", "auto")
     }
