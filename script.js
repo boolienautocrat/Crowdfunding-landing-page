@@ -12,6 +12,7 @@ const radioInput = $(".input");
 const navMiniItem = $(".nav-mini-item");
 const body = $("body");
 const backProjectCard = $(".backProjectCard");
+const backToTopBtn = $(".backToTop");
 var timesClicked = 0;
 const html = $("html");
 const backprojectClickElems = [btnBackProject, $(".slct-reward1"),
@@ -26,6 +27,18 @@ $("body").onunload =
 $(".input")[1].checked = false;
 $(".input")[2].checked = false;
 $(".pledgeSection").hide();
+
+backToTopBtn.on("click", function () {
+    html.scrollTop(0)
+
+})
+$(window).scroll(function () {
+    if (html.scrollTop() > 840) {
+        backToTopBtn.fadeIn(600);
+    } else {
+        backToTopBtn.fadeOut(400)
+    }
+})
 
 radioCheckClickElems.forEach(function (elem) {
     elem.click(function radioCheck() {
@@ -43,9 +56,9 @@ radioCheckClickElems.forEach(function (elem) {
             radioInput[0].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
         } else if (radioInput[0].checked == false) {
             $(".backProjectCard1").removeClass("heightIncrease");
-            setTimeout(function(){
+            setTimeout(function () {
                 $(".backProjectCard1 hr").hide();
-            },115)
+            }, 115)
             $(".backProjectCard1 .pledgeSection").slideUp(500);
             radioInput[0].parentElement.style.border = "2px solid #ececec";
 
@@ -60,9 +73,9 @@ radioCheckClickElems.forEach(function (elem) {
             radioInput[1].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
         } else if (radioInput[1].checked == false) {
             $(".backProjectCard2").removeClass("heightIncrease");
-            setTimeout(function(){
+            setTimeout(function () {
                 $(".backProjectCard2 hr").hide();
-            },115)
+            }, 115)
             $(".backProjectCard2 .pledgeSection").slideUp(500);
             radioInput[1].parentElement.style.border = "2px solid #ececec";
         };
