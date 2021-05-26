@@ -1,72 +1,129 @@
-var bkmarkCircle = document.getElementsByClassName("bkmark-circle");
-var bkmarkSvgIn = document.getElementsByClassName("bkmarkSvgIn");
-var btnBkmrk = $(".btn-left");
+const bkmarkCircle = document.getElementsByClassName("bkmark-circle");
+const bkmarkSvgIn = document.getElementsByClassName("bkmarkSvgIn");
+const btnBackProject = $(".btn-left");
 var button = document.getElementsByClassName("btn-bookmark");
-var buttonText = document.getElementsByClassName("btn-text");
-var hamburger = $(".icn-ham")
-var navbarMini = $(".nav-mini")
-var iconClose = $(".icn-close-wrapper")
-var cards = [$(".mn-cd-1"), $(".mn-cd-2"), $(".mn-cd-3")]
-var navMiniItem = $(".nav-mini-item");
-var body = $("body")
-var backProjectCard = $(".backProjectCard");
+const btnContinue = $(".price-continue");
+const buttonText = document.getElementsByClassName("btn-text");
+const hamburger = $(".icn-ham");
+const navbarMini = $(".nav-mini");
+const iconClose = $(".icn-close-wrapper");
+const cards = [$(".mn-cd-1"), $(".mn-cd-2"), $(".mn-cd-3")];
+const radioInput = $(".input");
+const navMiniItem = $(".nav-mini-item");
+const body = $("body");
+const backProjectCard = $(".backProjectCard");
+var timesClicked = 0;
+const html = $("html");
+const backprojectClickElems = [btnBackProject, $(".slct-reward1"),
+    $(".slct-reward2")];
+const radioCheckClickElems = [radioInput.slice(0, 3)];
 
+$(".input")[0].checked = false;
 $("body").onunload =
-    $(".input")[0].checked = false;
-    $("html").animate({
-        scrollTop : 0
+    html.animate({
+        scrollTop: 0
     }, "slow");
 $(".input")[1].checked = false;
 $(".input")[2].checked = false;
+$(".pledgeSection").hide();
 
+radioCheckClickElems.forEach(function (elem) {
+    elem.click(function radioCheck() {
+        timesClicked++
+        if (timesClicked > 1) {
+            $("input").prop("checked", false)
+            timesClicked = 0;
+        }
+        if (radioInput[0].checked == true) {
+            if ($(window).width() < 480) {
+                $(".backProjectCard1").addClass("heightIncrease");
+            };
+            $(".backProjectCard1 .pledgeSection").slideDown();
+            $(".backProjectCard1 hr").show();
+            radioInput[0].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
+        } else if (radioInput[0].checked == false) {
+            $(".backProjectCard1").removeClass("heightIncrease");
+            setTimeout(function(){
+                $(".backProjectCard1 hr").hide();
+            },115)
+            $(".backProjectCard1 .pledgeSection").slideUp(500);
+            radioInput[0].parentElement.style.border = "2px solid #ececec";
 
+        };
+
+        if (radioInput[1].checked == true) {
+            if ($(window).width() < 480) {
+                $(".backProjectCard2").addClass("heightIncrease");
+            }
+            $(".backProjectCard2 .pledgeSection").slideDown();
+            $(".backProjectCard2 hr").show();
+            radioInput[1].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
+        } else if (radioInput[1].checked == false) {
+            $(".backProjectCard2").removeClass("heightIncrease");
+            setTimeout(function(){
+                $(".backProjectCard2 hr").hide();
+            },115)
+            $(".backProjectCard2 .pledgeSection").slideUp(500);
+            radioInput[1].parentElement.style.border = "2px solid #ececec";
+        };
+
+        if (radioInput[2].checked == true) {
+            if ($(window).width() < 480) {
+                $(".backProjectCard3").addClass("heightIncrease");
+            }
+            $(".backProjectCard3 .pledgeSection").slideDown();
+            $(".backProjectCard3 hr").show();
+            radioInput[2].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
+        } else if (radioInput[2].checked == false) {
+            $(".backProjectCard3").removeClass("heightIncrease");
+            setTimeout(function () {
+                $(".backProjectCard3 hr").hide();
+            }, 115)
+            $(".backProjectCard3 .pledgeSection").slideUp(500);
+            radioInput[2].parentElement.style.border = "2px solid #ececec";
+        };
+    })
+})
+
+backprojectClickElems.forEach(function (elem) {
+    elem.on("click", function () {
+        hamburger.hide();
+        $(".backProject").fadeIn(500);
+        $(".mn-cd-1").hide();
+        $(".mn-cd-2").hide();
+        $(".mn-cd-3").hide();
+        html.animate({
+            scrollTop: 0
+        }, "slow")
+    });
+});
 function bkmrkChange() {
+    bkmarkCircle[0].setAttribute("fill", "hsl(176, 72%, 28%)");
+    bkmarkSvgIn[0].setAttribute("fill", "#fff");
+    button[0].removeAttribute("onclick");
+    button[0].setAttribute("onclick", "bkmrkDefault()")
+    button[0].style.backgroundColor = "#f4f8f9";
+    buttonText[0].style.color = "#1d695f";
+    buttonText[0].innerHTML = "Bookmarked";
+    button[0].style.marginLeft = "20px";
+    buttonText[0].style.left = "19px";
+};
 
-    if (button[0].classList.contains("btn-bookmark")) {
-        bkmarkCircle[0].setAttribute("fill", "hsl(176, 72%, 28%)");
-        bkmarkSvgIn[0].setAttribute("fill", "#fff");
-        button[0].style.backgroundColor = "#f4f8f9";
-        button[0].classList.add("bookmarked");
-        button[0].removeAttribute("onclick");
-        button[0].setAttribute("onclick", "bkmrkChangeToDefault()")
-        buttonText[0].style.color = "#1d695f";
-        buttonText[0].innerHTML = "Bookmarked";
-        button[0].style.marginLeft = "20px";
-        buttonText[0].style.left = "17px";
-    }
+function bkmrkDefault() {
+    bkmarkCircle[0].setAttribute("fill", "#707070");
+    bkmarkSvgIn[0].setAttribute("fill", "#b1b1b1");
+    button[0].removeAttribute("onclick");
+    button[0].setAttribute("onclick", "bkmrkChange()");
+    button[0].style.backgroundColor = "#f4f4f4";
+    buttonText[0].style.color = "#808080";
+    buttonText[0].innerHTML = "Bookmark";
+    button[0].style.marginLeft = "0px";
+    buttonText[0].style.left = "23px";
 }
 
-function bkmrkChangeToDefault() {
-    if (button[0].classList.contains("bookmarked")) {
-        button[0].classList.remove("bookmarked");
-        bkmarkCircle[0].removeAttribute("fill", "hsl(176, 72%, 28%)");
-        bkmarkCircle[0].setAttribute("fill", "#6f6f6f")
-        bkmarkSvgIn[0].removeAttribute("fill", "#fff");
-        bkmarkSvgIn[0].setAttribute("fill", "#b1b1b1");
-        button[0].style.backgroundColor = "#f4f4f4";
-        buttonText[0].style.color = "grey";
-        buttonText[0].innerHTML = "Bookmark";
-        button[0].style.marginLeft = "0px";
-        buttonText[0].style.left = "20px";
-        button[0].removeAttribute("onclick")
-        button[0].setAttribute("onclick", "bkmrkChange()")
-    }
-}
-
-function backproject() {
-    hamburger.hide();
-    $(".backProject").show();
-    $(".mn-cd-1").hide();
-    $(".mn-cd-2").hide();
-    $(".mn-cd-3").hide();
-}
-
-var timesClicked = 0;
-var radioInput = $(".input");
-
-function backProjectShow() {
+$(".icn-close").click(function () {
     hamburger.show();
-    $(".backProject").hide();
+    $(".backProject").fadeOut(300);
     $(".mn-cd-1").show();
     $(".mn-cd-2").show();
     $(".mn-cd-3").show();
@@ -76,79 +133,49 @@ function backProjectShow() {
     backProjectCard.removeClass("heightIncrease");
     backProjectCard.css("border", "2px solid #ececec");
     $(".pledgeSection").hide();
-}
-
-function radioCheck() {
-
-    timesClicked++
-    if (timesClicked > 1) {
-        $("input").prop("checked", false)
-        timesClicked = 0;
-    }
-
-    if (radioInput[0].checked == true) {
-        radioInput[0].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
-        $(".backProjectCard1").addClass("heightIncrease");
-    } else if (radioInput[0].checked == false) {
-        $(".backProjectCard1").removeClass("heightIncrease");
-        radioInput[0].parentElement.style.border = "2px solid #ececec";
-    };
-
-    if (radioInput[1].checked == true) {
-        $(".backProjectCard2").addClass("heightIncrease");
-        radioInput[1].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
-    } else if (radioInput[1].checked == false) {
-        $(".backProjectCard2").removeClass("heightIncrease");
-        radioInput[1].parentElement.style.border = "2px solid #ececec";
-    };
-
-    if (radioInput[2].checked == true) {
-        $(".backProjectCard3").addClass("heightIncrease");
-        radioInput[2].parentElement.style.border = "2px solid hsl(176, 50%, 47%)";
-    } else if (radioInput[2].checked == false) {
-        $(".backProjectCard3").removeClass("heightIncrease");
-        radioInput[2].parentElement.style.border = "2px solid #ececec";
-    }
-}
+    html.animate({
+        scrollTop: 0
+    }, "slow");
+});
 
 function changeColorBorder() {
     $("#card-h").hover(function () {
         $(".checkmark").css("border", "solid #3cb4ac 2px;");
-    })
-}
+    });
+};
 
-function redirectThanks() {
+btnContinue.click(function () {
     $(".backProject").hide();
     $(".mn-cd-1").show();
     $(".mn-cd-2").show();
     $(".mn-cd-3").show();
-    $(".mn-cd-1").css("filter", "brightness(90%)")
-    $(".mn-cd-2").css("filter", "brightness(90%)")
-    $(".mn-cd-3").css("filter", "brightness(90%)")
-    $("body").css("background-color", "#c2c2c2")
-    $(".hero-img-desktop").css("filter", "contrast(80%)")
+    $(".mn-cd-1").css("filter", "brightness(90%)");
+    $(".mn-cd-2").css("filter", "brightness(90%)");
+    $(".mn-cd-3").css("filter", "brightness(90%)");
+    $("body").css("background-color", "#c2c2c2");
+    $(".hero-img-desktop").css("filter", "contrast(80%)");
     $(".backProject").css("display", "none");
-    $(".thanks").css("display", "inline-block");
+    $(".thanks").css("display", "block");
     $(".input")[0].checked = false;
     $(".input")[1].checked = false;
     $(".input")[2].checked = false;
     backProjectCard.removeClass("heightIncrease");
     backProjectCard.css("border", "2px solid #ececec");
     $(".pledgeSection").hide();
-    if (window.matchMedia("(max-width: 400px)").matches){
-        $("html").animate({
+    if (window.matchMedia("(max-width: 400px)").matches) {
+        html.animate({
             scrollTop: 80
-        }, "slow")
+        }, "slow");
     };
     if (window.matchMedia("(min-width: 500px)").matches && window.matchMedia("(max-width: 1400px)").matches) {
-        $("html").animate({
+        html.animate({
             scrollTop: 260
         }, "slow");
-        body.css("overflow", "hidden");   
-    }
-}
+        body.css("overflow", "hidden");
+    };
+});
 
-function thanksEnd() {
+$(".gotIt").click(function () {
     $(".mn-cd-1").css("filter", "brightness(100%)")
     $(".mn-cd-2").css("filter", "brightness(100%)")
     $(".mn-cd-3").css("filter", "brightness(100%)")
@@ -156,10 +183,10 @@ function thanksEnd() {
     $(".hero-img-desktop").css("filter", "contrast(100%)")
     $(".thanks").css("display", "none")
     body.css("overflow", "auto");
-    $("html").animate({
+    html.animate({
         scrollTop: 0
     }, "slow");
-}
+})
 
 //Inputs
 var input2 = $(".input-price2");
@@ -200,7 +227,7 @@ function minPledge3() {
     }
 };
 
-if (window.matchMedia("(max-width: 380px)").matches) {
+if ($(window).width() < 480) {
     $(".icn-ham").show();
     $(".hero-img-desktop").removeAttr("src");
     $(".hero-img-desktop").attr("src", "/images/image-hero-mobile.jpg");
