@@ -720,11 +720,10 @@ input::-webkit-inner-spin-button {
     width: 90%;
     background-color: #fff;
     position: absolute;
-    top: 90px;
+    top: 0px;
     left: 0;
     right: 0;
     margin: auto;
-    animation: fromTopToBottom 0.3s ease;
   }
   .nav-mini h2 {
     font-weight: 500;
@@ -1025,7 +1024,7 @@ input::-webkit-inner-spin-button {
     bottom: 3px;
     right: 0px;
     left: 5px;
-    top: 5px;
+    top: 4px;
     width: 13px;
     height: 13px;
   }
@@ -1041,6 +1040,7 @@ input::-webkit-inner-spin-button {
   }
   .pledgeSection > p {
     margin: 0;
+    width: 100%;
   }
   .dollar-p {
     margin: 0 !important;
@@ -1048,8 +1048,9 @@ input::-webkit-inner-spin-button {
     left: 0;
   }
   .input-price {
-    top: -1px !important;
-    left: 6px !important;
+    left: 0px !important;
+    top: 1px !important;
+    margin-left: 10px !important;
     width: 50% !important;
   }
   .pledge-enter {
@@ -1058,16 +1059,24 @@ input::-webkit-inner-spin-button {
     margin-bottom: 20px !important;
   }
   .pledgeSection {
+    flex-wrap: wrap;
+    justify-content: center;
     text-align: center;
     position: relative;
+    padding-top: 25px;
     width: 285px;
     right: 23px;
     height: 130px;
   }
-  .btn-2 {
-    width: 110px !important;
+  .pledgeSection form {
+    margin-top: 20px;
+    margin-left: 0px;
   }
 
+  .pledgeWrapper p {
+    margin: 0;
+    width: auto;
+  }
   .thanks {
     padding: 30px;
     width: 90%;
@@ -1085,22 +1094,5 @@ input::-webkit-inner-spin-button {
     line-height: 28px;
     margin-bottom: 30px;
     padding-bottom: 0px;
-  }
-  @keyframes fromTopToBottom {
-    0% {
-      top: 0px;
-    }
-    100% {
-      top: 90px;
-    }
-  }
-
-  @keyframes fromBottomToTop {
-    0% {
-      top: 90px;
-    }
-    100% {
-      top: 0px;
-    }
   }
 }

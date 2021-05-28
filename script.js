@@ -167,11 +167,12 @@ btnContinue.click(function () {
     $(".mn-cd-3").css("filter", "brightness(90%)");
     $("body").css("background-color", "#c2c2c2");
     $(".hero-img-desktop").css("filter", "contrast(80%)");
-    $(".backProject").css("display", "none");
-    $(".thanks").css("display", "block");
+    $(".backProject").hide();
+    $(".thanks").show();
     $(".input")[0].checked = false;
     $(".input")[1].checked = false;
     $(".input")[2].checked = false;
+    $("hr").hide();
     backProjectCard.removeClass("heightIncrease");
     backProjectCard.css("border", "2px solid #ececec");
     $(".pledgeSection").hide();
@@ -194,7 +195,7 @@ $(".gotIt").click(function () {
     $(".mn-cd-3").css("filter", "brightness(100%)")
     $("body").css("background-color", "#fff")
     $(".hero-img-desktop").css("filter", "contrast(100%)")
-    $(".thanks").css("display", "none")
+    $(".thanks").hide();
     body.css("overflow", "auto");
     html.animate({
         scrollTop: 0
@@ -248,6 +249,9 @@ if ($(window).width() < 480) {
 
 hamburger.click(function () {
     navbarMini.show();
+    navbarMini.animate({
+        top: "90px"
+    }, 400);
     $(this).hide();
     iconClose.show();
     cards[0].css("filter", "brightness(90%)");
@@ -258,7 +262,12 @@ hamburger.click(function () {
 })
 
 iconClose.click(function () {
-    navbarMini.hide();
+    navbarMini.animate({
+        top: "15px"
+    }, 250);
+    setTimeout(function () {
+        navbarMini.fadeOut(100);  
+    }, 100)
     $(this).hide()
     hamburger.show();
     cards[0].css("filter", "brightness(100%)");
