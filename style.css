@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-.heightIncrease *:focus {
-  outline: 0 !important;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -27,7 +23,7 @@ hr {
   width: 576px;
   height: 1px;
   border: 0;
-  border-top: 2px solid #ececec;
+  border-top: 1px solid #d9d9d9;
   padding: 0;
 }
 
@@ -146,10 +142,13 @@ button {
 }
 
 .backToTop {
+  padding-top: 12px;
   display: none;
   width: 55px;
   height: 56px;
   position: fixed;
+  text-align: center;
+  justify-content: center;
   bottom: 30px;
   right: 30px;
 }
@@ -226,7 +225,7 @@ button {
 .cd-2,
 .cd-3 {
   border-radius: 10px;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #d9d9d9;
   margin-bottom: 20px;
 }
 
@@ -312,7 +311,7 @@ button {
 }
 
 .backProject {
-  border: solid #f2f2f2 2px;
+  border: solid #d9d9d9 1px;
   background-color: #fff;
   border-radius: 10px;
   margin: auto;
@@ -348,7 +347,7 @@ button {
 }
 
 .backProjectCard {
-  border: 2px solid #ececec;
+  border: 1px solid #d9d9d9;
   border-radius: 10px;
   margin: 0 0 20px;
   padding-top: 24px;
@@ -1051,7 +1050,11 @@ input::-webkit-inner-spin-button {
     left: 0px !important;
     top: 1px !important;
     margin-left: 10px !important;
-    width: 50% !important;
+    width: 56% !important;
+  }
+  .input-price:focus {
+    outline: none;
+    border: none;
   }
   .pledge-enter {
     margin-top: 20px !important;
