@@ -377,9 +377,9 @@ hamburger.click(function () {
     }, 400);
     $(this).hide();
     iconClose.show();
-    cards[0].css("filter", "brightness(90%)");
-    cards[1].css("filter", "brightness(90%)");
-    cards[2].css("filter", "brightness(90%)");
+    cards[0].css("filter", "brightness(80%)");
+    cards[1].css("filter", "brightness(80%)");
+    cards[2].css("filter", "brightness(80%)");
     body.css("overflow", "hidden")
     body.css("background-color", "#ececec");
 })
